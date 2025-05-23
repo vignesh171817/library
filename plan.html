@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="ht.css">
+</head>
+<body>
+    <div class="navigation">
+        <a href="index.html" class="h1">
+            Central Digital Library
+        </a>
+        <div class="nav-bar">
+           <a class="navi" href="ht.html">
+                       <!-- <span class="material-symbols-outlined">home</span>-->Home</a>
+        <a class="navi" href="">Books</a>
+        <a class="navi"  href="plan.html">Plans</a>
+        <a class="navi" href="">About Us</a>
+        <a class="navi" href="">Contact Us</a>
+        <a class="navi" href="login.html">Sign In</a>
+
+    
+        </div>
+        
+    </div>
+    <section id="subscription" style="padding: 50px; background-color: #f4f9fc; font-family: Arial, sans-serif;">
+  <h2 style="text-align: center; font-size: 32px; margin-bottom: 20px;">Library Subscription Plans</h2>
+  <p style="text-align: center; max-width: 750px; margin: 0 auto 40px; font-size: 16px; color: #555;">
+    Choose a subscription plan by clicking on it. The selected plan will be highlighted.
+  </p>
+
+  <div id="plans" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; max-width: 1200px; margin: 0 auto;">
+    <div class="plan" data-plan="free" style="flex: 1 1 300px; background-color: white; border: 1px solid #ddd; border-radius: 10px; padding: 30px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); cursor: pointer;">
+      <h3 style="text-align: center; font-size: 24px; color: #00796b;">Free Plan</h3>
+      <p style="text-align: center; font-size: 20px; font-weight: bold;">₹0 / month</p>
+      <ul style="list-style-type: none; padding: 0; font-size: 16px; color: #444;">
+        <li>✔ Access up to <strong>2 books</strong> per month</li>
+        <li>✔ Borrow for <strong>5 days</strong> per book</li>
+        <li>✔ Access to selected public domain books</li>
+      </ul>
+    </div>
+
+    <div class="plan" data-plan="standard" style="flex: 1 1 300px; background-color: white; border: 1px solid #ddd; border-radius: 10px; padding: 30px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); cursor: pointer;">
+      <h3 style="text-align: center; font-size: 24px; color: #00796b;">Standard Plan</h3>
+      <p style="text-align: center; font-size: 20px; font-weight: bold;">₹300 / month</p>
+      <ul style="list-style-type: none; padding: 0; font-size: 16px; color: #444;">
+        <li>✔ Access up to <strong>6 books</strong> per month</li>
+        <li>✔ Borrow for <strong>15 days</strong> per book</li>
+        <li>✔ Includes fiction, non-fiction & academic titles</li>
+        <li>✔ Standard support via email</li>
+      </ul>
+    </div>
+
+    <div class="plan" data-plan="premium" style="flex: 1 1 300px; background-color: white; border: 1px solid #ddd; border-radius: 10px; padding: 30px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); cursor: pointer;">
+      <h3 style="text-align: center; font-size: 24px; color: #00796b;">Premium Plan</h3>
+      <p style="text-align: center; font-size: 20px; font-weight: bold;">₹500 / month</p>
+      <ul style="list-style-type: none; padding: 0; font-size: 16px; color: #444;">
+        <li>✔ Unlimited book access</li>
+        <li>✔ Borrow for up to <strong>30 days</strong> per book</li>
+        <li>✔ Access to rare archives and premium journals</li>
+        <li>✔ Priority customer support</li>
+      </ul>
+    </div>
+  </div>
+
+  <div style="text-align: center; margin-top: 40px;">
+    <button id="subscribeBtn" style="padding: 12px 30px; font-size: 16px; background-color: #00796b; color: white; border: none; border-radius: 6px; cursor: pointer;" disabled>
+      Proceed to Payment
+    </button>
+  </div>
+</section>
+
+<script>
+  const plans = document.querySelectorAll('.plan');
+  let selectedPlan = null;
+
+  plans.forEach(plan => {
+    plan.addEventListener('click', () => {
+      // Remove green border from all plans
+      plans.forEach(p => p.style.border = '1px solid #ddd');
+
+      // Add green border to clicked plan
+      plan.style.border = '2px solid #00796b';
+
+      // Save selected plan
+      selectedPlan = plan.getAttribute('data-plan');
+
+      // Enable the button
+      document.getElementById('subscribeBtn').disabled = false;
+    });
+  });
+
+  document.getElementById('subscribeBtn').addEventListener('click', () => {
+    if (selectedPlan) {
+      alert(`You selected the "${selectedPlan}" plan. Proceeding to payment...`);
+      // Here you can trigger your payment flow or form submission
+    } else {
+      alert('Please select a subscription plan first.');
+    }
+  });
+</script>
+
+</body>
+</html>
